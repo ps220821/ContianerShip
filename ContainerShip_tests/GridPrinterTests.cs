@@ -8,7 +8,7 @@ public class GridPrinterTests
     [Fact]
     public void PrintGrid_ShouldCallPrintOnce()
     {
-        var gridPrinterMock = new Mock<GridPrinter>();
+        var gridPrinterMock = new Mock<IGridPrinter>();
         var ship = new Ship(2, 2, 1000, new List<IContainer>(), gridPrinterMock.Object);
 
         gridPrinterMock.Object.PrintGrid(ship);

@@ -18,9 +18,9 @@ namespace ContainerShip.Classes
         public List<IContainer> Containers { get; private set; }
         public IStack[,] Grid { get; private set; }
 
-        private readonly GridPrinter gridPrinter;
+        private readonly IGridPrinter gridPrinter;
 
-        public Ship(int lenght, int width, int weight, List<IContainer> containers, GridPrinter gridPrinter)
+        public Ship(int lenght, int width, int weight, List<IContainer> containers, IGridPrinter gridPrinter)
         {
             this.Lenght = lenght;
             this.Width = width;
@@ -51,7 +51,7 @@ namespace ContainerShip.Classes
         public void ArrangeContainers()
         {
             SortContainers();
-            foreach (var container in Containers)
+            foreach (IContainer container in Containers)
             {
                 PlaceContainersInStack(container);
             }
