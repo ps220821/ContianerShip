@@ -13,7 +13,7 @@ class Program
         int length = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine(("Enter the width of the ship: "));
         int width = Convert.ToInt32(Console.ReadLine());
-        GridPrinter gridPrinter = new GridPrinter();
+        IGridPrinter gridPrinter = new GridPrinter();
 
         List<IContainer> containers = new List<IContainer>();
         containers.Add(new Container(30, false));  // Regular container, 20 tons
@@ -40,6 +40,17 @@ class Program
         containers.Add(new Container(30, false));
         containers.Add(new Container(10, false));
         containers.Add(new Container(30, false));
+        containers.Add(new Container(30, false));
+        containers.Add(new Container(30, false));
+        containers.Add(new Container(30, false));
+        containers.Add(new Container(30, false));
+        containers.Add(new Container(30, false));
+        containers.Add(new Container(30, false));
+        containers.Add(new Container(30, false));
+        containers.Add(new Container(30, false));
+        containers.Add(new Container(30, false));
+        containers.Add(new Container(30, false));
+        containers.Add(new Container(30, false));
         containers.Add(new Container(20, false));
         containers.Add(new Container(30, false));
         containers.Add(new Container(25, false));
@@ -61,7 +72,7 @@ class Program
 
 
         // Create the ship with 4 rows and 5 columns
-        Ship ship = new Ship(length, width, 90, containers, gridPrinter);
+        IShip ship = new Ship(length, width, 90, containers, gridPrinter);
 
         // Arrange the containers in the ship
         ship.ArrangeContainers();

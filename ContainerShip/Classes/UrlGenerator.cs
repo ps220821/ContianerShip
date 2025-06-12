@@ -10,7 +10,7 @@ namespace ContainerShip.Classes
 {
     public class UrlGenerator
     {
-        public static string GetUrl(Ship ship)
+        public static string GetUrl(IShip ship)
         {
             string url = $"https://app6i872272.luna.fhict.nl/index.html?length={ship.Lenght}&width={ship.Width}";
 

@@ -17,13 +17,13 @@ public class ShipTests
             new ValuableContainer(60, false),
         };
 
-        var gridPrinterMock = new Mock<GridPrinter>();
+        var gridPrinterMock = new Mock<IGridPrinter>();
         var ship = new Ship(2, 2, 1000, containers, gridPrinterMock.Object);
 
         ship.ArrangeContainers();
 
         // We can verify if PrintGrid was called once after arranging containers.
-        gridPrinterMock.Verify(g => g.PrintGrid(It.IsAny<Ship>()), Times.Once);
+        gridPrinterMock.Verify(g => g.PrintGrid(It.IsAny<IShip>()), Times.Once);
 
         // You may add more assertions to ensure containers are placed in the grid correctly.
         ship.Containers.Should().HaveCount(3);  // We have 3 containers.
@@ -32,7 +32,7 @@ public class ShipTests
     [Fact]
     public void GetLeastLoadedRow_ShouldReturnCorrectStack()
     {
-        var gridPrinterMock = new Mock<GridPrinter>();
+        var gridPrinterMock = new Mock<IGridPrinter>();
         var ship = new Ship(2, 2, 1000, new List<IContainer>(), gridPrinterMock.Object);
 
         var stack = ship.GetLeastLoadedRow(0);
@@ -40,8 +40,9 @@ public class ShipTests
         stack.Should().NotBeNull();
         stack.CurrentWeight.Should().BeLessThanOrEqualTo(ship.Grid[0, 1].CurrentWeight); // Ensure it's the least loaded stack
     }
-
+     
     [Fact]
+
     public void ArrangeContainers_ShouldNotPlaceContainerIfNoRoom()
     {
         var containers = new List<IContainer>
@@ -50,12 +51,12 @@ public class ShipTests
             new Container(100, false)
         };
 
-        var gridPrinterMock = new Mock<GridPrinter>();
+        var gridPrinterMock = new Mock<IGridPrinter>();
         var ship = new Ship(2, 2, 1000, containers, gridPrinterMock.Object);
 
         ship.ArrangeContainers();
 
         // In this case, if containers can't be arranged, check the behavior.
-        gridPrinterMock.Verify(g => g.PrintGrid(It.IsAny<Ship>()), Times.Once);
+        gridPrinterMock.Verify(g => g.PrintGrid(It.IsAny<IShip>()), Times.Once);
     }
 }
