@@ -11,10 +11,10 @@ namespace ContainerShip.Interfaces
     {
         int Lenght { get; }
         int Width { get; }
-        IStack[,]Grid  { get; }
-
+        int MaxWeight { get; }
+        List<IContainer> Containers { get; }
+        IStack[,] Grid { get; }
         void ArrangeContainers();
-        IStack GetLeastLoadedRow(int row);
     }
 
 }

@@ -14,5 +14,7 @@ namespace ContainerShip.Interfaces
         int Weight { get; }
         bool IsEmpty { get; }
         Containertypes Containertype { get; }
+        bool CanBePlaced(IStack stack);
+        void PlaceInStack(IStack stack);
     }
 }

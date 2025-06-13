@@ -21,18 +21,27 @@ namespace ContainerShip.Classes.Containers
         public bool IsEmpty { get; private set; }
         public Containertypes Containertype { get; private set; }
 
-        public Container(int weight, bool isEmpty) 
+        public Container(int weight, bool isEmpty)
+            : this(weight, isEmpty, Containertypes.Regular)
+        {
+        }
+
+        protected Container(int weight, bool isEmpty, Containertypes type)
         {
             Weight = isEmpty ? 4 : weight;
             IsEmpty = isEmpty;
-            Containertype = Containertypes.Regular ;
-        } 
-        
-        public Container(int weight, bool isEmpty, Containertypes containertype) 
+            Containertype = type;
+        }
+
+        public virtual bool CanBePlaced(IStack stack)
         {
-            Weight = isEmpty ? 4 : weight;
-            IsEmpty = isEmpty;
-            Containertype = containertype;
+            return true;
+        }
+
+        // placing rule for regualar container is 
+        public virtual void PlaceInStack(IStack stack)
+        {
+            stack.Containers.Insert(0, this);
         }
     }
 }

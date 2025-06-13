@@ -10,6 +10,8 @@ namespace ContainerShip.Interfaces
     public interface IStack
     {
         int CurrentWeight { get; }
+        bool IsInFirstRow { get; }
+        bool IsInLastRow { get; }
         List<IContainer> Containers { get;}
         bool PlaceableInStack(IContainer container);
         bool AddToStack(IContainer container);
